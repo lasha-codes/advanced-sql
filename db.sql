@@ -37,7 +37,23 @@ VALUES (100, 'hamburger', 3.99),
 SELECT * FROM products;       
 
 -- NOT NULL constraint - i already know this but will still leave it here
-CREATE TABLE require (
+CREATE TABLE required (
   age INT NOT NULL,
   name VARCHAR(35) NOT NULL,  
-)
+);
+
+ALTER TABLE products
+MODIFY price DECIMAL(4, 2) NOT NULL; -- unlike one we did with the unique here u have to be very specific and use MODIFY
+
+INSERT INTO required VALUES (10, NULL); -- this would give me an error cause name can't be null
+
+-- CHECK 
+
+CREATE TABLE checkEmployees (
+  employee_id INT,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  hourly_pay DECIMAL(5, 2),
+  hire_date DATE,
+  CONSTRAINT chk_hourly_pay CHECK (hourly_pay => 10.00) -- this creates accessible constraint
+);
