@@ -55,5 +55,11 @@ CREATE TABLE checkEmployees (
   last_name VARCHAR(50),
   hourly_pay DECIMAL(5, 2),
   hire_date DATE,
-  CONSTRAINT chk_hourly_pay CHECK (hourly_pay => 10.00) -- this creates accessible constraint
+  CONSTRAINT chk_hourly_pay CHECK (hourly_pay > 10.00) -- this creates accessible constraint
 );
+
+INSERT INTO checkEmployees (hourly_pay) VALUES (9.9); -- this doesn't pass the chk_hourly_pay constraint cause pay must be more than 10
+
+-- to add constraint to the column if we forgot to add it when we created our table
+ALTER TABLE checkEmployees
+ADD CONSTRAINT chk_hourly_pay CHECK (hourly_pay >= 10);
