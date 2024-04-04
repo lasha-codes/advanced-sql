@@ -101,3 +101,14 @@ INSERT INTO transactions (transaction_id, amount)
 VALUES (1, 4.99);
 
 SELECT * FROM transactions -- right here default value for transaction_date is today
+
+-- PRIMARY KEYS
+CREATE TABLE  transactions (
+  transaction_id INT PRIMARY KEY,
+  amount DECIMAL(5, 2)  
+);
+
+-- Add a primary key constraint if we forgot
+ALTER TABLE transactions
+ADD CONSTRAINT
+PRIMARY KEY(transaction_id);
