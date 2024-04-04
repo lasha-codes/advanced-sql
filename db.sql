@@ -63,3 +63,21 @@ INSERT INTO checkEmployees (hourly_pay) VALUES (9.9); -- this doesn't pass the c
 -- to add constraint to the column if we forgot to add it when we created our table
 ALTER TABLE checkEmployees
 ADD CONSTRAINT chk_hourly_pay CHECK (hourly_pay >= 10);
+
+-- DEFAULT
+INSERT INTO products
+VALUES (104, 'straw', 0.00),
+	     (105, "napkin", 0.00),
+       (106, "fork", 0.00),
+       (107, "spoon", 0.00);
+-- lets's say we wanted default to be 0 if we didn't include price on insert
+
+CREATE TABLE products (
+  product_id INT,
+  product_name VARCHAR(25),
+  price DECIMAL(4, 2) DEFAULT 0
+);
+
+-- this if we forgot to add the default value while creating a table
+ALTER TABLE products
+ALTER price SET DEFAULT 0
