@@ -80,4 +80,24 @@ CREATE TABLE products (
 
 -- this if we forgot to add the default value while creating a table
 ALTER TABLE products
-ALTER price SET DEFAULT 0
+ALTER price SET DEFAULT 0;
+
+-- not inserting the value for price so default is 0.00
+INSERT INTO products (product_id, product_name)
+VALUES (104, 'straw'),
+       (105, 'napkin'),
+       (106, 'fork'),
+       (107, 'spoon');
+
+
+-- example with transactions table
+CREATE TABLE transactions (
+  transaction_id INT,
+  amount DECIMAL(5, 2),
+  transaction_date DATETIME DEFAULT NOW()
+);
+
+INSERT INTO transactions (transaction_id, amount)
+VALUES (1, 4.99);
+
+SELECT * FROM transactions -- right here default value for transaction_date is today
