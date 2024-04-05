@@ -132,3 +132,54 @@ AUTO_INCREMENT = 1000;
 -- now every time we insert a column id starts to increment from 1000 and on every insert increments by 1 as default
 INSERT INTO transactions (amount)
 VALUES (2.89);
+
+
+-- FOREIGN KEYS
+
+CREATE TABLE customers (
+  customer_id INT PRIMARY KEY AUTO_INCREMENT,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50)
+);
+
+INSERT INTO customers (first_name, last_name)
+VALUES ('Fred', 'Fish'),
+       ('Larry', 'Lobster'),
+       ('Bubble', 'Bass');
+
+
+-- create a foreign key that references the customer_id column from customers table
+CREATE TABLE transactions (
+  transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+  amount DECIMAL(5, 2),
+  customer_id INT,
+  FOREIGN KEY(customer_id) REFERENCES customers (customer_id)
+);
+
+-- how to drop a foreign key
+ALTER TABLE transactions
+DROP FOREIGN KEY transactions_ibfk_1;
+
+-- how to add FOREIGN KEY constraint
+ALTER TABLE transactions
+ADD CONSTRAINT fk_customer_id -- CONSTRAINT naming is optional
+FOREIGN KEY (customer_id) REFERENCES customers (customer_id);
+
+DELETE FROM transactions; -- just to restart
+
+-- make auto_increment start from 1000
+ALTER TABLE transactions 
+AUTO_INCREMENT = 1000;
+
+-- let's insert some rows in to the customers table
+INSERT INTO customers (first_name, last_name) 
+VALUES ('Dave', 'Gray'),
+       ('John', 'Fish'),
+       ('Fred', 'Jill'); 
+
+-- if we gave customer_id that does not exist in customers table it would give us an error
+INSERT INTO transactions (amount, customer_id)
+VALUES (4.99, 3),
+       (2.89, 2),
+       (3.38, 3),
+       (4.99, 1);
