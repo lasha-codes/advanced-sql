@@ -112,3 +112,23 @@ CREATE TABLE  transactions (
 ALTER TABLE transactions
 ADD CONSTRAINT
 PRIMARY KEY(transaction_id);
+
+-- AUTO_INCREMENT
+CREATE TABLE transactions (
+  transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+  amount DECIMAL(5, 2),
+);
+
+-- here id gets incremented by 1 every time we insert a column
+INSERT INTO transactions (amount)
+VALUES (4.99);
+
+DELETE * FROM transactions
+
+-- right here all we do is tell sql to start incrementing for 1000
+ALTER TABLE transactions
+AUTO_INCREMENT = 1000;
+
+-- now every time we insert a column id starts to increment from 1000 and on every insert increments by 1 as default
+INSERT INTO transactions (amount)
+VALUES (2.89);
