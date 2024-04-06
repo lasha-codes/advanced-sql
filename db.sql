@@ -227,3 +227,33 @@ FROM transactions;
 -- in the example we are concat-ing the first_name rows to last_name rows and returning it as a full_name row
 SELECT CONCAT(first_name, ' ', last_name) AS full_name
 FROM employees;
+
+-- Logical operators
+ALTER TABLE employees
+ADD COLUMN job VARCHAR(25) AFTER hourly_pay;
+
+UPDATE employees SET job = "manager" WHERE employee_id = 1;
+
+-- selects a row where column hire_date is less then provided date and job of that row is also equals cook
+SELECT * FROM employees WHERE hire_date < '2024-1-06' AND job = 'cook';
+
+-- selects a row where on of the provided conditions match the criteria
+SELECT * FROM employees
+WHERE job = 'cook' OR job = 'cashier';
+
+-- this selected a row where provided condition does not match the criteria
+SELECT * FROM employees
+WHERE NOT job = 'manager';
+
+-- this is the same as a previous example but now we have two conditions that need to pass the test (we can combine logical operators)
+SELECT * FROM employees
+WHERE NOT job = 'manager' AND NOT job = 'cook'
+
+-- here we would select all of the rows where date is more than first condition and less then second condition
+SELECT * FROM
+employees
+WHERE hire_date BETWEEN '2024-01-04' AND '2024-01-07';
+
+-- this command selects all of the rows where column "job" is equal to one of the provided "parameters"
+SELECT * FROM employees
+WHERE job IN ('cook', 'cashier', 'janitor');
