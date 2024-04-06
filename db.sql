@@ -183,3 +183,12 @@ VALUES (4.99, 3),
        (2.89, 2),
        (3.38, 3),
        (4.99, 1);
+
+-- JOINS 
+
+INSERT INTO transactions (amount, customer_id)
+VALUES (1.00, NULL);
+
+INSERT INTO customers (first_name, last_name)
+VALUES ('Poppy', 'Puff');
+SELECT * FROM customers
