@@ -201,3 +201,29 @@ SELECT * FROM transactions LEFT JOIN customers ON transactions.customer_id = cus
 
 -- does the same thing that LEFT JOIN does but it just returns rows from the right
 SELECT * FROM transactions RIGHT JOIN customers ON transactions.customer_id = customers.customer_id;
+
+-- FUNCTIONS
+
+-- this line of sql query returns how many rows of amount exist
+SELECT COUNT(amount) AS "today's transactions" -- add a custom alias
+FROM transactions;
+
+-- this tells us what is the max amount in every of the rows
+SELECT MAX(amount) AS maximum
+FROM transactions;
+
+-- this tells us what is the minimum amount in every of the rows
+SELECT MIN(amount) AS minimum
+FROM transactions;
+
+-- this tells us average amount of all of the rows
+SELECT AVG(amount) AS average
+FROM transactions;
+
+-- this tells us sum of the amount in all of the rows so total
+SELECT SUM(amount) AS sum
+FROM transactions;
+
+-- in the example we are concat-ing the first_name rows to last_name rows and returning it as a full_name row
+SELECT CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees;
