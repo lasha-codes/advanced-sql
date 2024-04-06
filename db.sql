@@ -195,3 +195,7 @@ SELECT * FROM customers
 
 -- what this is gonna do is we are gonna select * where transactions.customer_id = customers.id and group them together
 SELECT * FROM transactions INNER JOIN customers ON transactions.customer_id = customers.customer_id;
+
+-- unlike INNER JOIN it returns rows from left(first_mentioned table) 
+SELECT * FROM transactions LEFT JOIN customers ON transactions.customer_id = customers.
+customer_id;
