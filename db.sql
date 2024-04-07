@@ -257,3 +257,33 @@ WHERE hire_date BETWEEN '2024-01-04' AND '2024-01-07';
 -- this command selects all of the rows where column "job" is equal to one of the provided "parameters"
 SELECT * FROM employees
 WHERE job IN ('cook', 'cashier', 'janitor');
+
+-- WILD CARDS
+
+-- this command selects * from the employees table where first_name starts with an s
+SELECT * FROM employees
+WHERE first_name LIKE 's%';
+
+-- this command selects * from the employees table where hire_dare starts with an 2023
+SELECT * FROM employees
+WHERE hire_date LIKE '2023%';
+
+-- this command selects * from the employees table where last_name ends with an s
+SELECT * FROM employees
+WHERE last_name LIKE '%s';
+
+-- this command selects * from the employees table where in job column after first word we there is "cook"
+SELECT * FROM employees
+WHERE job LIKE '_ook';
+
+-- this command selects * from the employees table where hire_date's month equals to 01
+SELECT * FROM employees
+WHERE hire_date LIKE '____-01-__';
+
+-- this command selects * from the employees table where hire_date's day is 02
+SELECT * FROM employees
+WHERE hire_date LIKE '____-__-02';
+
+-- this command selects * from the employees table where job's second character is a;
+SELECT * FROM employees
+WHERE job LIKE '_a%'; -- u can combine different wild cards with each other
