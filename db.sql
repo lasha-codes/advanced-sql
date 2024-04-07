@@ -287,3 +287,29 @@ WHERE hire_date LIKE '____-__-02';
 -- this command selects * from the employees table where job's second character is a;
 SELECT * FROM employees
 WHERE job LIKE '_a%'; -- u can combine different wild cards with each other
+
+-- ORDER BY
+
+-- this will order employees by last_name default was employee_id this will be ordered also by alphabetical orders; 
+SELECT * FROM employees
+ORDER BY last_name;
+
+-- this does the same as the last command but the thing is its now reversed do reverse alphabetical order
+SELECT * FROM employees
+ORDER BY last_name DESC;
+
+-- ASC this is the DEFAULT behavior of the command so does the exact same thing first command did
+SELECT * FROM employees
+ORDER BY last_name ASC;
+
+-- this command sorts employees table by first_name's reverse alphabetical order
+SELECT * FROM employees
+ORDER BY first_name DESC;
+
+-- this says if two columns has the same number or letter value we will ORDER BY those rows by customer_id
+SELECT * FROM transactions 
+ORDER BY amount, customer_id;
+
+-- same as the last command but u can also add here how u wanna order them
+SELECT * FROM transactions 
+ORDER BY amount ASC, customer_id DESC;
