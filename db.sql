@@ -288,7 +288,7 @@ WHERE hire_date LIKE '____-__-02';
 SELECT * FROM employees
 WHERE job LIKE '_a%'; -- u can combine different wild cards with each other
 
--- ORDER BY
+-- ORDER BY clause
 
 -- this will order employees by last_name default was employee_id this will be ordered also by alphabetical orders; 
 SELECT * FROM employees
@@ -313,3 +313,21 @@ ORDER BY amount, customer_id;
 -- same as the last command but u can also add here how u wanna order them
 SELECT * FROM transactions 
 ORDER BY amount ASC, customer_id DESC;
+
+-- LIMIT clause
+
+-- this query only selects the first 2 customers in customers table
+SELECT * FROM customers
+LIMIT 2;
+
+-- this query orders customers by last_name alphabetical order and then selects first 3 of them
+SELECT * FROM customers
+ORDER BY last_name LIMIT 3;
+
+-- same thing as the last query but now descending order
+SELECT * FROM customers
+ORDER BY last_name DESC LIMIT 3;
+
+-- the first 10 here is called offset here we are saying select 10 customers after the 10th customer
+SELECT * FROM customers
+LIMIT 10, 10;
